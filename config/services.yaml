@@ -9,6 +9,8 @@ services:
         resource: '../src/*'
         exclude:
             - '../src/Modules/*/Domain/*/Entity'
+            - '../src/Lib/Infrastructure/Doctrine/Fixtures'
+            - '../src/Lib/Infrastructure/Doctrine/Migrations'
             - '../src/Kernel.php'
         public: true
 
