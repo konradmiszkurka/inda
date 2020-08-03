@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Product\Infrastructure;
 
-use App\Lib\Infrastructure\AbstractRepository;
+use App\Lib\Domain\Repository\AbstractRepository;
 use App\Modules\Product\Domain\Product\Entity\ProductEntity;
 use App\Modules\Product\Domain\Product\Interfaces\ProductPersistenceInterface;
 use App\Modules\Product\Domain\Product\Interfaces\ProductRepositoryInterface;
