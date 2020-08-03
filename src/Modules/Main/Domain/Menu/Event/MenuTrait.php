@@ -26,9 +26,7 @@ trait MenuTrait
     public function getAdmin()
     {
         return [
-            $this->user(),
-            $this->translation(),
-            $this->attachments(),
+//            $this->user(),
         ];
     }
 
@@ -131,121 +129,6 @@ trait MenuTrait
                             'label' => 'Edit',
                             'route' => 'app_modules_user_ui_admin_user_edit',
                             'params' => ['id' => '__request__'],
-                        ],
-                    ],
-                ],
-            ],
-        ];
-    }
-
-    private function translation(): array
-    {
-        return [
-            'label' => 'Translations',
-            'route' => 'translation_index',
-            'icon' => 'zmdi zmdi-flag',
-            'granted' => TranslationVoter::MENU,
-            'child' => [
-                [
-                    'label' => 'Show',
-                    'route' => 'translation_show',
-                    'params' => [
-                        'configName' => '__request__',
-                        'locale' => '__request__',
-                        'domain' => '__request__'
-                    ],
-                ],
-                [
-                    'label' => 'Create',
-                    'route' => 'translation_create',
-                    'params' => [
-                        'configName' => '__request__',
-                        'locale' => '__request__',
-                        'domain' => '__request__'
-                    ],
-                ],
-                [
-                    'label' => 'Edit',
-                    'route' => 'translation_edit',
-                    'params' => [
-                        'configName' => '__request__',
-                        'locale' => '__request__',
-                        'domain' => '__request__'
-                    ],
-                ],
-                [
-                    'label' => 'Delete',
-                    'route' => 'translation_delete',
-                    'params' => [
-                        'configName' => '__request__',
-                        'locale' => '__request__',
-                        'domain' => '__request__'
-                    ],
-                ],
-            ],
-        ];
-    }
-
-    private function attachments(): array
-    {
-        return [
-            'label' => 'Attachments',
-            'route' => '',
-            'icon' => 'zmdi zmdi-attachment-alt',
-            'granted' => AttachmentVoter::MENU,
-            'display' => true,
-            'child' => [
-                [
-                    'label' => 'File',
-                    'route' => 'app_modules_attachment_ui_file_lists',
-                    'granted' => FileVoter::LISTS,
-                    'child' => [
-                        [
-                            'label' => 'Create',
-                            'route' => 'app_modules_attachment_ui_file_create',
-                        ],
-                        [
-                            'label' => 'Remove',
-                            'route' => 'app_modules_attachment_ui_file_remove',
-                            'params' => ['id' => '__request__'],
-                        ],
-                        [
-                            'label' => 'File',
-                            'route' => '',
-                            'child' => [
-                                [
-                                    'label' => 'Edit',
-                                    'route' => 'app_modules_attachment_ui_file_edit',
-                                    'params' => ['id' => '__request__'],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'label' => 'Photo',
-                    'route' => 'app_modules_attachment_ui_photo_lists',
-                    'granted' => PhotoVoter::LISTS,
-                    'child' => [
-                        [
-                            'label' => 'Create',
-                            'route' => 'app_modules_attachment_ui_photo_create',
-                        ],
-                        [
-                            'label' => 'Remove',
-                            'route' => 'app_modules_attachment_ui_photo_remove',
-                            'params' => ['id' => '__request__'],
-                        ],
-                        [
-                            'label' => 'File',
-                            'route' => '',
-                            'child' => [
-                                [
-                                    'label' => 'Edit',
-                                    'route' => 'app_modules_attachment_ui_photo_edit',
-                                    'params' => ['id' => '__request__'],
-                                ],
-                            ],
                         ],
                     ],
                 ],
