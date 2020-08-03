@@ -4,23 +4,17 @@ declare(strict_types=1);
 
 namespace App\Modules\Product\Domain\Product\Interfaces;
 
+use App\Modules\Product\Domain\Price\Entity\PriceEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 interface DataInterface
 {
-    /**
-     * @Assert\NotNull()
-     */
-    public function getName(): string;
+    public function getName(): ?string;
 
-    /**
-     * @Assert\NotNull()
-     */
-    public function getPrice(): int;
+    public function getPrice(): ?PriceEntity;
 
     /**
      * @Assert\Length(min="100")
-     * @Assert\NotNull()
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 }

@@ -45,6 +45,7 @@ class ProductApplicationService
         }
 
         $entity = $this->service->create($data);
+
         $result->setObject($entity);
 
         return $result;

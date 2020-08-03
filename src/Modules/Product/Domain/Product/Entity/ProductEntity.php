@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Modules\Product\Domain\Product\Entity;
 
 use App\Lib\Domain\BaseEntity;
+use App\Modules\Product\Domain\Price\Entity\PriceEntity;
 use App\Modules\Product\Domain\Product\Interfaces\DataInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -22,24 +23,32 @@ class ProductEntity extends BaseEntity
      */
     private $name;
     /**
-     * @var int
-     * @ORM\Column(type="integer", name="price")
+     * @var PriceEntity|null
+     * @ORM\OneToOne(targetEntity="\App\Modules\Product\Domain\Price\Entity\PriceEntity")
+     * @ORM\JoinColumn(name="price_id", nullable=true)
      */
     private $price;
     /**
      * @var string
-     * @ORM\Column(type="string", name="description")
+     * @ORM\Column(type="text", name="description")
      */
     private $description;
+
+    public function getPrice(): ?PriceEntity
+    {
+        return $this->price;
+    }
 
     public function __construct(DataInterface $data)
     {
         $this->populate($data);
+        $this->created();
     }
 
     public function update(DataInterface $data): void
     {
         $this->populate($data);
+        $this->updated();
     }
 
     public function remove(): void
@@ -50,11 +59,6 @@ class ProductEntity extends BaseEntity
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getPrice(): int
-    {
-        return $this->price;
     }
 
     public function getDescription(): string

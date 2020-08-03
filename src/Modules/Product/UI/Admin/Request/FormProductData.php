@@ -4,68 +4,76 @@ declare(strict_types=1);
 
 namespace App\Modules\Product\UI\Admin\Request;
 
+use App\Modules\Product\Domain\Price\Entity\PriceEntity;
 use App\Modules\Product\Domain\Product\Interfaces\DataInterface;
 
 final class FormProductData implements DataInterface
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
     /**
-     * @var int
+     * @var PriceEntity|null
      */
     private $price;
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
+     * @return FormProductData
      */
-    public function setName(string $name): void
+    public function setName(?string $name): FormProductData
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return int
+     * @return PriceEntity|null
      */
-    public function getPrice(): int
+    public function getPrice(): ?PriceEntity
     {
         return $this->price;
     }
 
     /**
-     * @param int $price
+     * @param PriceEntity|null $price
+     * @return FormProductData
      */
-    public function setPrice(int $price): void
+    public function setPrice(?PriceEntity $price): FormProductData
     {
         $this->price = $price;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
+     * @return FormProductData
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): FormProductData
     {
         $this->description = $description;
+        return $this;
     }
+
 }
