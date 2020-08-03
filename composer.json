@@ -36,6 +36,17 @@
     "zircote/swagger-php": "^3.0"
   },
   "require-dev": {
+    "symfony/phpunit-bridge": "^5.1",
+    "codeception/codeception": "^4.0",
+    "codeception/module-asserts": "^1.1",
+    "codeception/module-cli": "^1.0",
+    "codeception/module-db": "^1.0",
+    "codeception/module-doctrine2": "^1.0",
+    "codeception/module-phpbrowser": "^1.0",
+    "codeception/module-rest": "^1.2",
+    "codeception/module-sequence": "^1.0",
+    "codeception/module-symfony": "^1.0",
+    "codeception/module-webdriver": "^1.0"
   },
   "config": {
     "preferred-install": {
