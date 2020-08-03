@@ -2,7 +2,7 @@
 namespace App\Tests;
 
 
-use LetMeOut\Tests\_generated\FunctionalTesterActions;
+use App\Tests\_generated\FunctionalTesterActions;
 
 /**
  * Inherited Methods
@@ -26,9 +26,9 @@ class FunctionalTester extends \Codeception\Actor
     function authAdmin(FunctionalTester $I, array $dataForm = [])
     {
         $I->amOnPage('/login');
-        $I->submitForm('#login', array_merge([
-            'username' => 'admin',
-            'password' => 'admin'
+        $I->submitForm('#_submit', array_merge([
+            '_username' => 'admin',
+            '_password' => 'admin'
         ], $dataForm));
     }
 }

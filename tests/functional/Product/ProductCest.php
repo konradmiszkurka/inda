@@ -35,41 +35,23 @@ class ProductCest
     {
         $I->amOnPage('/admin/products/lists');
         $I->click('.btn-success');
-        $I->seeInCurrentUrl('/admin/product/new-product');
-        $this->formProduct();
+        $I->seeInCurrentUrl('/admin/new-product');
+        $this->formProduct($I);
     }
 
-    /**
-     * @covers ::edit
-     * @param FunctionalTester $I
-     */
-    public function edit(FunctionalTester $I): void
+    private function formProduct(FunctionalTester $I, array $dataForm = [])
     {
-        $I->amOnPage('/game/create');
-        $id = $this->formInstitution($I)['id'];
-        $I->seeInCurrentUrl('/game/' . $id . '/edit');
-
-        $this->formInstitution($I);
-        $I->seeInCurrentUrl('/game/lists');
-    }
-
-    private function formProduct(FunctionalTester $I, array $dataForm = []): array
-    {
-        $uniq = uniqid('', true);
         $data = array_merge(
             [
-                'name' => 'Test',
-                'price' => 12,
-                'Description' => '123123123cezce',
+                'product[name]' => 'Test',
+                'product[price]' => 12,
+                'product[description]' => '123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce123123123cezce',
             ],
             $dataForm
         );
 
         $I->submitForm('form[name="product"]', $data);
 
-        preg_match_all('/[0-9]+/', $I->grabFromCurrentUrl(), $matches);
-        return [
-            'id' => $matches[0][0] ?? null,
-        ];
+        $I->seeInCurrentUrl('/admin/products/lists');
     }
 }
