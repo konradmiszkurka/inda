@@ -1,0 +1,20 @@
+doctrine:
+  dbal:
+  orm:
+    entity_managers:
+      default:
+        mappings:
+          gedmo_loggable:
+            type: annotation
+            prefix: Gedmo\Loggable\Entity
+            dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+            alias: GedmoLoggable
+            is_bundle: false
+          libDomain:
+            type: annotation
+            dir: '%kernel.project_dir%/src/Lib/Domain'
+            prefix: App\Lib\Domain
+          ProductDomain:
+            type: annotation
+            dir: '%kernel.project_dir%/src/Modules/Product/Domain'
+            prefix: App\Modules\Product\Domain
