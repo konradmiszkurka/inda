@@ -61,4 +61,14 @@ abstract class BaseEntity
     {
         return $this->deletedAt;
     }
+
+    protected function created(): void
+    {
+        $this->createdAt = new DateTime();
+    }
+
+    protected function updated(): void
+    {
+        $this->updateAt = new DateTime();
+    }
 }
