@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block page_content %}
+    <div class="row clearfix">
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">
+                    {% for product in products %}
+                        {{ product.name }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('app_modules_product_ui_admin_product_create') }}" class="button btn-success">Create new product</a>
+    </div>
+    <div class="row clearfix">
+    </div>
+{% endblock %}

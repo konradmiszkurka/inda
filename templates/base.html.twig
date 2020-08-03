@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+{% extends '@AdminLTE/layout/default-layout.html.twig' %}
+
+{% block page_title %}Inda{% endblock %}
+
+{% block navbar_start %}
+    <li class="dropdown messages-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fas fa-globe"></i>
+        </a>
+    </li>
+{% endblock %}
