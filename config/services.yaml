@@ -12,8 +12,31 @@ services:
             - '../src/Lib/Infrastructure/Doctrine/Fixtures'
             - '../src/Lib/Infrastructure/Doctrine/Migrations'
             - '../src/Kernel.php'
+            - '../src/Lib/Domain/Search'
+            - '../src/Lib/Domain/Serializer'
+            - '../src/Lib/Domain/Error'
+            - '../src/Lib/Domain/Search/SearchRegistry'
+            - '../src/Lib/Domain/Transform'
+            - '../src/**/DTO'
+            - '../src/Modules/*/Infrastructure/Projection'
         public: true
 
     App\Lib\Infrastructure\Doctrine\Fixtures\:
         resource: '../src/Lib/Infrastructure/Doctrine/Fixtures'
         tags: ['doctrine.fixture.orm']
+
+    params_converter:
+        autowire: true
+        class: App\Lib\Domain\Params\ParamsConverter
+        tags:
+            - { name: request.param_converter, converter: params_converter }
+
+    gedmo.listener.softdeleteable:
+        class: Gedmo\SoftDeleteable\SoftDeleteableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    my_admin_bundle.show_user_listener:
+        class: App\Modules\User\Domain\User\Event\Listener\NavbarUserListener
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }

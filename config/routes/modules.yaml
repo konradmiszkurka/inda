@@ -1,3 +1,15 @@
 Product:
   type: annotation
   resource: 'Modules/Product/UI'
+
+Attachment:
+  type: annotation
+  resource: 'Modules/Attachment/UI'
+
+Main:
+  type: annotation
+  resource: 'Modules/Main/UI'
+
+User:
+  type: annotation
+  resource: 'Modules/User/UI'

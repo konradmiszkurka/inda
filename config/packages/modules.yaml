@@ -1,5 +1,8 @@
 doctrine:
   dbal:
+    types:
+      AttachmentFileCategoryEnum: App\Modules\Attachment\Domain\File\Enum\CategoryEnum
+      UserUserAvatarEnum: App\Modules\User\Domain\User\Enum\TypeAvatarEnum
   orm:
     entity_managers:
       default:
@@ -18,3 +21,11 @@ doctrine:
             type: annotation
             dir: '%kernel.project_dir%/src/Modules/Product/Domain'
             prefix: App\Modules\Product\Domain
+          UserDomain:
+            type: annotation
+            dir: '%kernel.project_dir%/src/Modules/User/Domain'
+            prefix: App\Modules\User\Domain
+          AttachmentDomain:
+            type: annotation
+            dir: '%kernel.project_dir%/src/Modules/Attachment/Domain'
+            prefix: App\Modules\Attachment\Domain
