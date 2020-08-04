@@ -6,8 +6,9 @@ namespace App\Modules\Product\UI\Admin\Request;
 
 use App\Modules\Product\Domain\Price\Entity\PriceEntity;
 use App\Modules\Product\Domain\Product\Interfaces\DataInterface;
+use App\Modules\Product\Domain\Product\Interfaces\DataInterfaceRequest;
 
-final class FormProductWithPriceData
+final class FormProductWithPriceData implements DataInterfaceRequest
 {
     /**
      * @var string|null

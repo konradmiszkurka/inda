@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Product\Application;
 
+use App\Lib\Application\EmailService;
 use App\Lib\Domain\Error\Error;
 use App\Lib\Domain\Result\Result;
 use App\Lib\Domain\Result\ResultInterface;
@@ -25,13 +26,19 @@ class ProductApplicationService
      * @var ProductService
      */
     private $service;
+    /**
+     * @var EmailService
+     */
+    private $emailService;
 
     public function __construct(
         ValidatorInterface $validator,
-        ProductService $service
+        ProductService $service,
+        EmailService $emailService
     ) {
         $this->validator = $validator;
         $this->service = $service;
+        $this->emailService = $emailService;
     }
 
     public function createProduct(DataInterface $data): ResultInterface
@@ -46,6 +53,24 @@ class ProductApplicationService
 
         $entity = $this->service->create($data);
 
+        /**
+         * Comment send email
+         */
+//        if ($entity) {
+//            try {
+//                $this->emailService->sendEmail(
+//                    \Swift_Mailer::class,
+//                    'Product Create',
+//                    'application@html.pl',
+//                    'fake@example.com',
+//                'productCreate',
+//                    [
+//                    'productName' => $entity->getName()
+//                    ]);
+//            } catch (\Exception $exception) {
+//                return $exception->getMessage();
+//            }
+//        }
         $result->setObject($entity);
 
         return $result;
